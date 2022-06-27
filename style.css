@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: rgb(58, 129, 0);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	cursor: none;
+}
+
+@media (max-width: 700px) {
+	* {
+		font-size: 8px;
+	}
+}
+
+@media (max-height: 850px) {
+	* {
+		font-size: 8px;
+	}
+}
+
+h1 {
+	color: #ff6557;
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.info {
+	display: flex;
+	width: 20rem;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 1rem;
+	font-size: 2rem;
+}
+
+.score {
+	color: #ff0044;
+}
+
+.lives {
+	color: #a6ffaf;
+}
+
+.board {
+	height: 40rem;
+	width: 40rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
+	gap: 5rem;
+}
+
+.hole {
+	background-color: rgb(165, 85, 11);
+	border-radius: 50%;
+	box-shadow: inset 0 0.6rem 0 0.35rem rgb(53, 21, 6),
+				inset 0 1.2rem 1.2rem 0.9rem rgba(0, 0, 0, 0.3),
+				0 0 0.5rem rgba(0, 0, 0, 0.5);
+	position: relative;
+	overflow: hidden;
+}
+
+.hole .mole {
+	width: 70%;
+	height: 90%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+	animation: rise 0.3s ease-out;
+}
+
+@keyframes rise {
+	0% {transform: translateX(-50%) translateY(100%);}
+	100% {transform: translateX(-50%) translateY(0);}
+}
+
+.cursor {
+	height: 6.5rem;
+	width: 6.5rem;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	background-image: url('assets/hammer.png');
+	background-size: 100% 100%;
+	transform: translate(-20%, -20%);
+	transition: transform 0.1s;
+	pointer-events: none;
+}
+
+.cursor.active {
+	transform: translate(-20%, -20%) rotate(-45deg);
+}
+
+.modal {
+	position: fixed;
+	left: 25%;
+	top: 25%;
+	width: 50%;
+	height: 50%;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.show-modal {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1.0);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.5s;
+}
